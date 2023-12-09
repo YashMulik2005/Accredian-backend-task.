@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://deft-tiramisu-c60213.netlify.app/signup",
   })
 );
 app.use(express.json());
