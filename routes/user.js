@@ -6,8 +6,8 @@ const bcrypt = require("bcrypt");
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
   con.query(
-    "SELECT * FROM UserTable WHERE username = ?",
-    username,
+    "SELECT * FROM UserTable WHERE Username = ?",
+    [username],
     (err, result) => {
       if (err) {
         return res.status(400).json({
@@ -62,7 +62,7 @@ router.post("/signup", async (req, res) => {
             } else {
               con.query(
                 "INSERT INTO UserTable (username, email, password) VALUES (?, ?, ?)",
-                [username, email, hashedPassword, m_no],
+                [username, email, hashedPassword],
                 (err, result) => {
                   if (err) {
                     return res.status(400).json({
