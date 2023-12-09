@@ -38,7 +38,7 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/signup", async (req, res) => {
-  const { username, email, password, m_no } = req.body;
+  const { username, email, password } = req.body;
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -61,7 +61,7 @@ router.post("/signup", async (req, res) => {
               });
             } else {
               con.query(
-                "INSERT INTO UserTable (username, email, password, m_no) VALUES (?, ?, ?, ?)",
+                "INSERT INTO UserTable (username, email, password) VALUES (?, ?, ?)",
                 [username, email, hashedPassword, m_no],
                 (err, result) => {
                   if (err) {
