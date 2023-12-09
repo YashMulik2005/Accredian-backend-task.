@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://deft-tiramisu-c60213.netlify.app",
+    origin: "*",
   })
 );
 app.use(express.json());
